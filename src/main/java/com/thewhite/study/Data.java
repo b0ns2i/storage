@@ -9,14 +9,16 @@ import java.util.UUID;
 
 public class Data {
 
-    String name_link;
-    String discription_link;
+    UUID id;
+    String name;
+    String discription;
     String link;
     Data(){}
-    Data(String name_link, String discription_link, String link){
+    Data(UUID id, String name, String discription, String link){
 
-        this.name_link = name_link;
-        this.discription_link = discription_link;
+        this.id = id;
+        this.name = name;
+        this.discription = discription;
         this.link = link;
     }
 }

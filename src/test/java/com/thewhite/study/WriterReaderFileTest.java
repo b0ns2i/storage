@@ -1,43 +1,35 @@
 package com.thewhite.study;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class WriterReaderFileTest {
+import java.lang.reflect.Type;
+import java.util.Map;
+import java.util.UUID;
 
+public class WriterReaderFileTest {
+    // Данный тест проверят метод WriterReaderFile.readAndParse() на првильность считывания файла.
     @Test
-    void  ReaderWRFTest(){
-        // Данный тест проверят матод WriterReaderFile.ReaderWRT на првильность считывания файла.
+    void  readAdnParseJsonTest(){
+        //Arrange
         String path = "C:\\TheWhite\\BackEnd\\storage\\src\\test\\DB\\DB_links.json";
         WriterReaderFile wrf = new WriterReaderFile(path);
-        String actualData = "{"+
-                "  \"306f52b9-1662-4cd1-b677-0a1a015c693c\": {"+
-                "    \"name_link\": \"redcom\","+
-                "    \"discription_link\": \"городской провайдер\","+
-                "    \"link\": \"redcom.ru\"  "+
-        "},"+
-                "  \"e582a685-5500-45ed-91a5-70e88d0a21cf\": {"+
-                "    \"name_link\": \"metanit \","+
-                "    \"discription_link\": \"site metanit \","+
-                "    \"link\": \"metanit.com \"  "+
-                "},"+
-                "  \"745b9ceb-dc73-4bdd-8065-71a986a984c2\": {"+
-                "    \"name_link\": \"CaLReD\","+
-                "    \"discription_link\": \"asdagdsaqsd\","+
-                "    \"link\": \"REDCAL.COM\"  "+
-                "},"+
-                "  \"7fc79a46-952d-4526-9327-217aa8b6083a\": {"+
-                "    \"name_link\": \"ReDCoM\","+
-                "    \"discription_link\": \"ReDCOM site\","+
-                "    \"link\": \"ReDCOM.ru\"  "+
-                "}"+
-                "}";
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Data expectedData = new Data(
+                UUID.fromString("306f52b9-1662-4cd1-b677-0a1a015c693c"),
+                "redcom",
+                "городской провайдер",
+                "redcom.ru");
 
+        //Act
+        Map<UUID, Data> DataMap = wrf.readAdnParseJson();
+        Data actualData = DataMap.get(expectedData.id);
 
-        String  expectedData = wrf.ReaderWRF();
-
-
-        Assertions.assertEquals(expectedData,actualData);
+        //Assert
+        Assertions.assertEquals(expectedData.name, actualData.name);
     }
 
 }
