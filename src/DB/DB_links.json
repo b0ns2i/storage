@@ -22,5 +22,17 @@
     "name": "newsite",
     "discription": "New site",
     "link": "newsite.onion"
+  },
+  "f5ce6495-01de-4c3e-b95c-6bf63e679e84": {
+    "id": "f5ce6495-01de-4c3e-b95c-6bf63e679e84",
+    "name": "Имя",
+    "discription": "Описание имени",
+    "link": "name.name"
+  },
+  "3dc0fb77-7734-4612-bf5d-2d48578cc824": {
+    "id": "3dc0fb77-7734-4612-bf5d-2d48578cc824",
+    "name": "Тест lombok билдер",
+    "discription": "билдер lombok",
+    "link": "lombok.org"
   }
 }

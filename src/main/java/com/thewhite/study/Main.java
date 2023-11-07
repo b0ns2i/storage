@@ -18,8 +18,8 @@ public class Main {
 
 
     @Bean
-    public CommandLineRunner run(){
-        return  args -> {
+    public CommandLineRunner run() {
+        return args -> {
             System.out.println("Это моя перва программа на спринг в консоле!!!");
             boolean check = true;
 
@@ -59,54 +59,12 @@ public class Main {
                     default:
                         System.out.println("Нет такого пункта, попробуйте снова.");
 
+
                 }
             }
 
         };
     }
-
-
-    //        Scanner in = new Scanner(System.in);
-//        System.out.println("Рабос с файлом: " + args[0]);
-//        WriterReaderFile wrf = new WriterReaderFile(args[0]);
-//        DataRepository dataRepository = new DataRepository(wrf);
-//
-//
-//        while (check) {
-//
-//
-//            System.out.println(
-//                    "Выберите один из пунктов меню:\n" +
-//                            "\t1. Получить запись по идентификатору;\n" +
-//                            "\t2. Найти запись по части наименования (без учёта регистра);\n" +
-//                            "\t3. Дабавить новую запись;\n" +
-//                            "\t4. Закрыть;\n"
-//
-//            );
-//
-//            String itemMenu = in.nextLine();
-//
-//            switch (itemMenu) {
-//                case "1":
-//                    runTheFirstMenuItem(dataRepository, in);
-//                    break;
-//                case "2":
-//                    runTheSecondMenuItem(dataRepository, in);
-//                    break;
-//                case "3":
-//                    runTheThirdMenuItem(dataRepository, in, wrf);
-//                    break;
-//                case "4":
-//                    check = false;
-//                    break;
-//                default:
-//                    System.out.println("Нет такого пункта, попробуйте снова.");
-//
-//            }
-//        }
-
-
-
 
 
     public static void runTheFirstMenuItem(DataRepository dataRepository, Scanner in) {
@@ -135,7 +93,7 @@ public class Main {
         }
     }
 
-    public static void runTheSecondMenuItem(DataRepository dataRepository, Scanner in){
+    public static void runTheSecondMenuItem(DataRepository dataRepository, Scanner in) {
         boolean checkSSD = true;
         while (checkSSD) {
             System.out.println("Введите имя/часть имени записи. Нажмите \":q\" для выхода в главное меню.");
@@ -166,15 +124,18 @@ public class Main {
         }
     }
 
-    public static void runTheThirdMenuItem(DataRepository dataRepository, Scanner in, WriterReaderFile wrf){
+    public static void runTheThirdMenuItem(DataRepository dataRepository, Scanner in, WriterReaderFile wrf) {
         System.out.println("Введите имя ссылки:");
         String name = in.nextLine();
         System.out.println("Введите описание ссылки:");
         String discription = in.nextLine();
         System.out.println("Введите ссылку:");
         String link = in.nextLine();
-        Data newData = new Data(UUID.randomUUID(), name, discription, link);
 
-        wrf.write(dataRepository.addItemData(newData));
+        wrf.write(dataRepository.addItemData(Data.builder()
+                .id(UUID.randomUUID())
+                .name(name)
+                .discription(discription)
+                .link(link).build()));
     }
 }
