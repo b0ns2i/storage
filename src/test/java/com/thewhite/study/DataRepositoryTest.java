@@ -14,7 +14,7 @@ public class DataRepositoryTest {
 
     //Данный тест проверяет верно ли метод MapData.GetDataItemID(String uuid) обрабатывает неверный формат ID
     @Test
-    void getDataItemIDExceptionTest() {
+    void getDataItemIDExceptionTest() throws Exception {
 
         //Arrange
         Map<UUID, Data> testMap = new HashMap<UUID, Data>();
@@ -34,10 +34,16 @@ public class DataRepositoryTest {
         WriterReaderFile wrf = Mockito.mock(WriterReaderFile.class);
         when(wrf.readAdnParseJson()).thenReturn(testMap);
         DataRepository dataRepository = new DataRepository(wrf);
-        String uuid = "мой неправильный ID";
-
+        String uuid = null;
+        Data dataExpected = new Data();
         //Act
-        Data dataExpected = dataRepository.getDataItemID(uuid);
+
+        try{
+             dataExpected = dataRepository.getDataItemID(uuid);
+        }
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
 
         //Assert
         Assertions.assertNull(dataExpected);
@@ -60,9 +66,15 @@ public class DataRepositoryTest {
         when(wrf.readAdnParseJson()).thenReturn(testMap);
         DataRepository dataRepository = new DataRepository(wrf);
         String uuid = "306f52b9-1662-4cd1-b677-0a1a015c693c";
-
+        Data dataExpected = new Data();
         //Act
-        Data dataExpected = dataRepository.getDataItemID(uuid);
+        try {
+            dataExpected = dataRepository.getDataItemID(uuid);
+        }
+        catch (Exception ex){
+
+        }
+
 
         //Assert
         Assertions.assertEquals(dataExpected.link, "redcom.ru");
@@ -91,6 +103,29 @@ public class DataRepositoryTest {
 
         //Assert
         Assertions.assertEquals(listData.size(), 0);
+    }
+
+    //Данный тест проверяет правильность вывода ошибки при вызове метода dataRepository.addItemData(null)
+    @Test
+    void addItemDataTestException(){
+        //Arrange
+        Map<UUID, Data> testMap = new HashMap<UUID, Data>();
+        WriterReaderFile wrf = Mockito.mock(WriterReaderFile.class);
+        when(wrf.readAdnParseJson()).thenReturn(testMap);
+        DataRepository dataRepository = new DataRepository(wrf);
+        String actualException = "Была добавлена пустая запись!";
+        String expactidException = "";
+        //Act
+
+        try {
+            dataRepository.addItemData(null);
+        }
+        catch (Exception ex){
+            expactidException = ex.getMessage();
+        }
+
+        //Assert
+        Assertions.assertEquals(expactidException,actualException);
     }
 
 

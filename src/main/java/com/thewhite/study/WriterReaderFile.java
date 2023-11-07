@@ -22,7 +22,11 @@ public class WriterReaderFile {
 
     }
 
-    public void write(String json) {
+    public void write(String json) throws Exception{
+
+        if(json == null){
+            throw new Exception("Была переда пустая строка json!");
+        }
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(pathFile))) {
 
             bw.write(json);

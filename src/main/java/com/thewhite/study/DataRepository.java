@@ -31,22 +31,28 @@ public class DataRepository {
          return listData;
 
      }
-     public Data getDataItemID(String uuidStr){
+     public Data getDataItemID(String uuidStr) throws Exception{
          Data data = new Data();
          try {
+             if(uuidStr == null){
+                 throw new Exception("Неверный формат ID. Попробуйте снова!");
+             }
              UUID uuidDataItem = UUID.fromString(uuidStr);
              data = mapDataItems.get(uuidDataItem);
              return data;
 
          }
-         catch (IllegalArgumentException ex){
+         catch (Exception ex){
              System.out.println("Неверный формат ID. Попробуйте снова!");
              return null;
          }
 
      }
-     public String addItemData(Data newData){
+     public String addItemData(Data newData) throws Exception{
 
+        if(newData == null){
+            throw new Exception("Была добавлена пустая запись!");
+        }
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         mapDataItems.put(newData.id, newData);
 

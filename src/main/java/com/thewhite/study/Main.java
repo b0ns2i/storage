@@ -75,8 +75,13 @@ public class Main {
             if (uuidStr.equals(":q")) {
                 checkGTIID = false;
             } else {
+                Data data = new Data();
+                try {
+                    data = dataRepository.getDataItemID(uuidStr);
+                }
+                catch (Exception ex){
 
-                Data data = dataRepository.getDataItemID(uuidStr);
+                }
 
                 if (data == null) {
                     System.out.println("Запись не найдена!");
@@ -132,10 +137,16 @@ public class Main {
         System.out.println("Введите ссылку:");
         String link = in.nextLine();
 
-        wrf.write(dataRepository.addItemData(Data.builder()
-                .id(UUID.randomUUID())
-                .name(name)
-                .discription(discription)
-                .link(link).build()));
+        try {
+
+            wrf.write(dataRepository.addItemData(Data.builder()
+                    .id(UUID.randomUUID())
+                    .name(name)
+                    .discription(discription)
+                    .link(link).build()));
+        }
+        catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 }
