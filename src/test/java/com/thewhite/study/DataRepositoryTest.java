@@ -40,7 +40,7 @@ public class DataRepositoryTest {
         Data dataExpected = dataRepository.getDataItemID(uuid);
 
         //Assert
-        Assertions.assertNull(dataExpected.link);
+        Assertions.assertNull(dataExpected);
 
     }
 
