@@ -1,10 +1,12 @@
 package com.thewhite.study;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
 
-
+@SpringBootApplication
 public class Main {
 
     public static void main(String[] args) {
@@ -51,6 +53,8 @@ public class Main {
 
         }
     }
+
+
 
     public static void runTheFirstMenuItem(DataRepository dataRepository, Scanner in) {
         System.out.println("Введите ID записи. Нажмите \":q\" для выхода в главное меню.");
