@@ -3,6 +3,8 @@ package com.thewhite.study;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
@@ -20,12 +22,14 @@ public class Main {
     @Bean
     public CommandLineRunner run() {
         return args -> {
-            System.out.println("Это моя перва программа на спринг в консоле!!!");
             boolean check = true;
+
+            ApplicationContext ctx = new AnnotationConfigApplicationContext(MyAppContext.class);
+            WriterReaderFile wrf = ctx.getBean(WriterReaderFile.class);
 
             Scanner in = new Scanner(System.in);
             System.out.println("Рабос с файлом: " + "C:\\TheWhite\\BackEnd\\ДЗ2\\storage\\src\\DB\\DB_links.json");
-            WriterReaderFile wrf = new WriterReaderFile("C:\\TheWhite\\BackEnd\\ДЗ2\\storage\\src\\DB\\DB_links.json");
+
             DataRepository dataRepository = new DataRepository(wrf);
 
 
@@ -80,7 +84,7 @@ public class Main {
                     data = dataRepository.getDataItemID(uuidStr);
                 }
                 catch (Exception ex){
-
+                    System.out.println(ex.getMessage());
                 }
 
                 if (data == null) {

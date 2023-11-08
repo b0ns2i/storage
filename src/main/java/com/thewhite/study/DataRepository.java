@@ -31,7 +31,7 @@ public class DataRepository {
          return listData;
 
      }
-     public Data getDataItemID(String uuidStr) throws Exception{
+     public Data getDataItemID(String uuidStr) {
          Data data = new Data();
          try {
              if(uuidStr == null){

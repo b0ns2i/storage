@@ -1,8 +1,11 @@
 package com.thewhite.study;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -10,8 +13,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+
 public class WriterReaderFile {
 
+    @Value("${data.path}")
     String pathFile;
 
     WriterReaderFile(String pathFile) {
@@ -56,6 +61,13 @@ public class WriterReaderFile {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         Map<UUID, Data> mapDataItems = gson.fromJson(oldJson, itemsMapType);
+//        Map<UUID, Data> mapDataItems = null;
+//        try {
+//            mapDataItems = new ObjectMapper().readValue(oldJson, HashMap.class);
+//        } catch (IOException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+
         if (mapDataItems == null) {
             mapDataItems = new HashMap<UUID, Data>();
         }
