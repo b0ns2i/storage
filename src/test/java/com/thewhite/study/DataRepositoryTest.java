@@ -3,6 +3,7 @@ package com.thewhite.study;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class DataRepositoryTest {
 
     //Данный тест проверяет верно ли метод MapData.GetDataItemID(String uuid) обрабатывает неверный формат ID
     @Test
-    void getDataItemIDExceptionTest() throws Exception {
+    void getDataItemIDExceptionTest() {
 
         //Arrange
         Map<UUID, Data> testMap = new HashMap<UUID, Data>();
@@ -38,12 +39,8 @@ public class DataRepositoryTest {
         Data dataExpected = new Data();
         //Act
 
-        try{
-             dataExpected = dataRepository.getDataItemID(uuid);
-        }
-        catch (Exception ex){
-            System.out.println(ex.getMessage());
-        }
+        dataExpected = dataRepository.getDataItemID(uuid);
+
 
         //Assert
         Assertions.assertNull(dataExpected);
@@ -67,13 +64,9 @@ public class DataRepositoryTest {
         DataRepository dataRepository = new DataRepository(wrf);
         String uuid = "306f52b9-1662-4cd1-b677-0a1a015c693c";
         Data dataExpected = new Data();
-        //Act
-        try {
-            dataExpected = dataRepository.getDataItemID(uuid);
-        }
-        catch (Exception ex){
 
-        }
+        //Act
+        dataExpected = dataRepository.getDataItemID(uuid);
 
 
         //Assert
@@ -107,7 +100,7 @@ public class DataRepositoryTest {
 
     //Данный тест проверяет правильность вывода ошибки при вызове метода dataRepository.addItemData(null)
     @Test
-    void addItemDataTestException(){
+    void addItemDataTestException() {
         //Arrange
         Map<UUID, Data> testMap = new HashMap<UUID, Data>();
         WriterReaderFile wrf = Mockito.mock(WriterReaderFile.class);
@@ -119,13 +112,12 @@ public class DataRepositoryTest {
 
         try {
             dataRepository.addItemData(null);
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             expactidException = ex.getMessage();
         }
 
         //Assert
-        Assertions.assertEquals(expactidException,actualException);
+        Assertions.assertEquals(expactidException, actualException);
     }
 
 

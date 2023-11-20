@@ -10,7 +10,7 @@ public class MyAppContext {
 
     @Bean()
     @Scope("singleton")
-    public WriterReaderFile getWRF(){
+    public WriterReaderFile getWRF() {
         return new WriterReaderFile();
     }
 }

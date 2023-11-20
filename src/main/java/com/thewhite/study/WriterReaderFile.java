@@ -1,5 +1,6 @@
 package com.thewhite.study;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -23,13 +24,13 @@ public class WriterReaderFile {
         this.pathFile = pathFile;
     }
 
-    WriterReaderFile(){
+    WriterReaderFile() {
 
     }
 
-    public void write(String json) throws Exception{
+    public void write(String json) throws Exception {
 
-        if(json == null){
+        if (json == null) {
             throw new Exception("Была переда пустая строка json!");
         }
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(pathFile))) {
@@ -58,15 +59,13 @@ public class WriterReaderFile {
             System.out.println(ex.getMessage());
         }
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-        Map<UUID, Data> mapDataItems = gson.fromJson(oldJson, itemsMapType);
-//        Map<UUID, Data> mapDataItems = null;
-//        try {
-//            mapDataItems = new ObjectMapper().readValue(oldJson, HashMap.class);
-//        } catch (IOException ex) {
-//            System.out.println(ex.getMessage());
-//        }
+        Map<UUID, Data> mapDataItems = null;
+        try {
+            mapDataItems = new ObjectMapper().readValue(oldJson, new TypeReference<Map<UUID, Data>>() {
+            });
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
 
         if (mapDataItems == null) {
             mapDataItems = new HashMap<UUID, Data>();

@@ -14,7 +14,7 @@ import java.util.UUID;
 public class WriterReaderFileTest {
     // Данный тест проверят метод WriterReaderFile.readAndParse() на првильность считывания файла.
     @Test
-    void  readAdnParseJsonTest(){
+    void readAdnParseJsonTest() {
         //Arrange
         String path = "C:\\TheWhite\\BackEnd\\storage\\src\\test\\DB\\DB_links.json";
         WriterReaderFile wrf = new WriterReaderFile(path);
@@ -35,7 +35,7 @@ public class WriterReaderFileTest {
 
     //Данный тест проверяет правильность вывода ошибки при вызове метода WriterReaderFile.write(null)
     @Test
-    void writeTestException(){
+    void writeTestException() {
 
         //Arrange
 
@@ -47,13 +47,12 @@ public class WriterReaderFileTest {
         try {
 
             wrf.write(null);
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             expectedException = ex.getMessage();
         }
 
         //Asser
-        Assertions.assertEquals(expectedException,actualException);
+        Assertions.assertEquals(expectedException, actualException);
     }
 
 
