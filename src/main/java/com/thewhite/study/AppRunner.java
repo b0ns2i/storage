@@ -13,52 +13,52 @@ import java.util.UUID;
 public class AppRunner implements CommandLineRunner {
 
     @Override
-    public void run(String[] args){
+    public void run(String[] args) {
 
-            boolean check = true;
+        boolean check = true;
 
-            ApplicationContext ctx = new AnnotationConfigApplicationContext(MyAppContext.class);
-            WriterReaderFile wrf = ctx.getBean(WriterReaderFile.class);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(MyAppContext.class);
+        WriterReaderFile wrf = ctx.getBean(WriterReaderFile.class);
 
-            Scanner in = new Scanner(System.in);
-            System.out.println("Рабос с файлом: " + "C:\\TheWhite\\BackEnd\\ДЗ2\\storage\\src\\DB\\DB_links.json");
+        Scanner in = new Scanner(System.in);
+        System.out.println("Рабос с файлом: " + "C:\\TheWhite\\BackEnd\\ДЗ2\\storage\\src\\DB\\DB_links.json");
 
-            DataRepository dataRepository = new DataRepository(wrf);
-
-
-            while (check) {
+        DataRepository dataRepository = new DataRepository(wrf);
 
 
-                System.out.println(
-                        "Выберите один из пунктов меню:\n" +
-                                "\t1. Получить запись по идентификатору;\n" +
-                                "\t2. Найти запись по части наименования (без учёта регистра);\n" +
-                                "\t3. Дабавить новую запись;\n" +
-                                "\t4. Закрыть;\n"
-
-                );
-
-                String itemMenu = in.nextLine();
-
-                switch (itemMenu) {
-                    case "1":
-                        runTheFirstMenuItem(dataRepository, in);
-                        break;
-                    case "2":
-                        runTheSecondMenuItem(dataRepository, in);
-                        break;
-                    case "3":
-                        runTheThirdMenuItem(dataRepository, in, wrf);
-                        break;
-                    case "4":
-                        check = false;
-                        break;
-                    default:
-                        System.out.println("Нет такого пункта, попробуйте снова.");
+        while (check) {
 
 
-                }
+            System.out.println(
+                    "Выберите один из пунктов меню:\n" +
+                            "\t1. Получить запись по идентификатору;\n" +
+                            "\t2. Найти запись по части наименования (без учёта регистра);\n" +
+                            "\t3. Дабавить новую запись;\n" +
+                            "\t4. Закрыть;\n"
+
+            );
+
+            String itemMenu = in.nextLine();
+
+            switch (itemMenu) {
+                case "1":
+                    runTheFirstMenuItem(dataRepository, in);
+                    break;
+                case "2":
+                    runTheSecondMenuItem(dataRepository, in);
+                    break;
+                case "3":
+                    runTheThirdMenuItem(dataRepository, in, wrf);
+                    break;
+                case "4":
+                    check = false;
+                    break;
+                default:
+                    System.out.println("Нет такого пункта, попробуйте снова.");
+
+
             }
+        }
 
 
     }
@@ -74,8 +74,7 @@ public class AppRunner implements CommandLineRunner {
                 Data data = new Data();
                 try {
                     data = dataRepository.getDataItemID(uuidStr);
-                }
-                catch (Exception ex){
+                } catch (Exception ex) {
                     System.out.println(ex.getMessage());
                 }
 
@@ -140,8 +139,7 @@ public class AppRunner implements CommandLineRunner {
                     .name(name)
                     .discription(discription)
                     .link(link).build()));
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
