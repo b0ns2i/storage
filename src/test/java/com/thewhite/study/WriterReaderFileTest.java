@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.lang.reflect.Type;
 import java.util.Map;
@@ -31,5 +32,29 @@ public class WriterReaderFileTest {
         //Assert
         Assertions.assertEquals(expectedData.name, actualData.name);
     }
+
+    //Данный тест проверяет правильность вывода ошибки при вызове метода WriterReaderFile.write(null)
+    @Test
+    void writeTestException(){
+
+        //Arrange
+
+        WriterReaderFile wrf = new WriterReaderFile("Тестовый путь");
+        String actualException = "Была переда пустая строка json!";
+        String expectedException = "";
+
+        //Act
+        try {
+
+            wrf.write(null);
+        }
+        catch (Exception ex){
+            expectedException = ex.getMessage();
+        }
+
+        //Asser
+        Assertions.assertEquals(expectedException,actualException);
+    }
+
 
 }

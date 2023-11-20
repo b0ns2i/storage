@@ -5,11 +5,23 @@
     "discription": "провайдер ",
     "link": "redcom.ru"
   },
-  "50f77e91-fb07-4224-a908-1e5432ca9def": {
-    "id": "50f77e91-fb07-4224-a908-1e5432ca9def",
-    "name": "metanit",
-    "discription": "metanit site",
-    "link": "metanit.com"
+  "f5ce6495-01de-4c3e-b95c-6bf63e679e84": {
+    "id": "f5ce6495-01de-4c3e-b95c-6bf63e679e84",
+    "name": "Имя",
+    "discription": "Описание имени",
+    "link": "name.name"
+  },
+  "11c6083f-ddc2-4087-95c4-36423d9b39fb": {
+    "id": "11c6083f-ddc2-4087-95c4-36423d9b39fb",
+    "name": "newsite",
+    "discription": "New site",
+    "link": "newsite.onion"
+  },
+  "3dc0fb77-7734-4612-bf5d-2d48578cc824": {
+    "id": "3dc0fb77-7734-4612-bf5d-2d48578cc824",
+    "name": "Тест lombok билдер",
+    "discription": "билдер lombok",
+    "link": "lombok.org"
   },
   "2aadab7c-62a7-45bf-af62-4f3eebd35eba": {
     "id": "2aadab7c-62a7-45bf-af62-4f3eebd35eba",
@@ -17,10 +29,28 @@
     "discription": "универ",
     "link": "dvgups.ru"
   },
-  "11c6083f-ddc2-4087-95c4-36423d9b39fb": {
-    "id": "11c6083f-ddc2-4087-95c4-36423d9b39fb",
-    "name": "newsite",
-    "discription": "New site",
-    "link": "newsite.onion"
+  "50f77e91-fb07-4224-a908-1e5432ca9def": {
+    "id": "50f77e91-fb07-4224-a908-1e5432ca9def",
+    "name": "metanit",
+    "discription": "metanit site",
+    "link": "metanit.com"
+  },
+  "e24a20f0-dbed-4c96-ab93-a8694e522c02": {
+    "id": "e24a20f0-dbed-4c96-ab93-a8694e522c02",
+    "name": "jackson",
+    "discription": "jackson lb",
+    "link": "lackson.com"
+  },
+  "d58459c9-7daf-4a47-bd53-f5c05b04887d": {
+    "id": "d58459c9-7daf-4a47-bd53-f5c05b04887d",
+    "name": "mysss",
+    "discription": "mysss",
+    "link": "mysss.com"
+  },
+  "bab28799-b566-4dda-92f8-21c021e3df37": {
+    "id": "bab28799-b566-4dda-92f8-21c021e3df37",
+    "name": "ДЗ2",
+    "discription": "ДЗ2",
+    "link": "ДЗ2"
   }
 }
